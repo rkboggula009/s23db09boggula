@@ -2,10 +2,22 @@ extends layout
 
 block content
   h1= title
-  p Welcome to index #{title}
-  button(type="button", class="btn btn-secondary" onclick="") Press Me
+  p This is index page #{title}
+  button(type="button", class="btn btn-success" onClick="doReduce()") Press Me
+  div#reduce Reduce the value. 
 
-  
+  script.  
+    var count = 20
+    var change = -1
+    function doReduce() {
+      count = count + change 
+      change = change - 1
+      document.getElementById("reduce").innerHTML = "Count "+ count +" with change "+change;
+    }
+
+
+
+
  
   
 
