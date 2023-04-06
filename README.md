@@ -4,7 +4,7 @@ Assignment 10
 Render Link:https://s23wb09boggula.onrender.com\
 
 ### Class details:
-Glass
-glass_name - string
-quantity - number
-resistance - string
+images
+images_name - string
+size- string
+cost - number
