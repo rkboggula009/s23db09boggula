@@ -12,16 +12,29 @@ mongoose.connect(connectionString,
 {useNewUrlParser: true,
 useUnifiedTopology: true});
 
+//Get the default connection
+var db = mongoose.connection;
+//Bind connection to error event
+db.on('error', console.error.bind(console, 'MongoDB connectionerror:'));
+db.once("open", function(){
+console.log("Connection to DB succeeded")});
 
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var imageRouter = require('./routes/images');
+var imagesRouter = require('./routes/images');
 var boardRouter = require('./routes/board');
 var selectorRouter = require('./routes/selector');
+var resourceRouter = require('./routes/resource');
+
+
+var images = require("./models/images");
+
+
 
 var app = express();
 
+// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
@@ -33,9 +46,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/images', imageRouter);
+app.use('/images', imagesRouter);
 app.use('/board', boardRouter);
 app.use('/selector', selectorRouter);
+app.use('/resource', resourceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -52,5 +66,35 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+// We can seed the collection if needed on server start
+async function recreateDB(){
+// Delete everything
+await images.deleteMany();
+let instance1 = new
+images({images_name:"image1",size:"large",cost:1000});
+instance1.save().then(doc=> {
+//if(err) return console.error(err);
+console.log("First object saved")}
+).catch(err=>{
+  console.error(err)})
+
+let instance2 = new
+images({images_name:"image2",size:"medium",cost:700});
+instance2.save().then(doc=> {
+//if(err) return console.error(err);
+console.log("First object saved")}
+).catch(err=>{
+  console.error(err)})
+let instance3 = new
+images({images_name:"image3",size:"small",cost:800});
+instance3.save().then(doc=> {
+//if(err) return console.error(err);
+console.log("First object saved")}
+).catch(err=>{
+  console.error(err)
+})
+}
+let reseed = true;
+if (reseed) { recreateDB();}
 
 module.exports = app;
