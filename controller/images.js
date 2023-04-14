@@ -1,4 +1,4 @@
-var images = require('../models/image');
+var images = require('../models/images');
 // List of all Gifts
 exports.images_list = async function(req, res) {
     try{

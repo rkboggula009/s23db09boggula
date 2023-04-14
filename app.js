@@ -14,12 +14,7 @@ useUnifiedTopology: true});
 console.log("it is connected")
 
 
-//Get the default connection
-var db = mongoose.connection;
-//Bind connection to error event
-db.on('error', console.error.bind(console, 'MongoDB connectionerror:'));
-db.once("open", function(){
-console.log("Connection to DB succeeded")});
+
 
 
 var indexRouter = require('./routes/index');
@@ -30,7 +25,7 @@ var selectorRouter = require('./routes/selector');
 var resourceRouter = require('./routes/resource');
 
 
-var images = require("./models/image");
+var images = require("./models/images");
 
 
 
@@ -73,8 +68,7 @@ app.use(function(err, req, res, next) {
 async function recreateDB(){
 // Delete everything
 await images.deleteMany();
-let instance1 = new
-images({images_name:"image1", size:"large",cost:1000});
+let instance1 = new images({images_name:"image1", size:"large",cost:1000});
 instance1.save().then(doc=> {
 //if(err) return console.error(err);
 console.log("First object saved")}
