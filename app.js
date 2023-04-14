@@ -51,6 +51,7 @@ app.use('/board', boardRouter);
 app.use('/selector', selectorRouter);
 app.use('/resource', resourceRouter);
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -71,7 +72,7 @@ async function recreateDB(){
 // Delete everything
 await images.deleteMany();
 let instance1 = new
-images({images_name:"image1",size:"large",cost:1000});
+images({images_name:"image1", size:"large",cost:1000});
 instance1.save().then(doc=> {
 //if(err) return console.error(err);
 console.log("First object saved")}
@@ -79,14 +80,14 @@ console.log("First object saved")}
   console.error(err)})
 
 let instance2 = new
-images({images_name:"image2",size:"medium",cost:700});
+images({images_name:"image2", size:"medium",cost:700});
 instance2.save().then(doc=> {
 //if(err) return console.error(err);
 console.log("First object saved")}
 ).catch(err=>{
   console.error(err)})
 let instance3 = new
-images({images_name:"image3",size:"small",cost:800});
+images({images_name:"Car", size:"small",cost:800});
 instance3.save().then(doc=> {
 //if(err) return console.error(err);
 console.log("First object saved")}
