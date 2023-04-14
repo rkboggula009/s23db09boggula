@@ -87,7 +87,7 @@ console.log("First object saved")}
 ).catch(err=>{
   console.error(err)})
 let instance3 = new
-images({images_name:"Car", size:"small",cost:800});
+images({images_name:"image3", size:"small",cost:800});
 instance3.save().then(doc=> {
 //if(err) return console.error(err);
 console.log("First object saved")}

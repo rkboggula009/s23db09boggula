@@ -14,7 +14,7 @@ exports.images_list = async function(req, res) {
 // Handle Costume create on POST.
 exports.images_create_post = async function(req, res) {
     console.log(req.body)
-    let document = new gift();
+    let document = new images();
     // We are looking for a body, since POST does not have query parameters.
     // Even though bodies can be in many different formats, we will be picky
     // and require that it be a json object

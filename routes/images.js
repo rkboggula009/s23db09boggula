@@ -1,13 +1,8 @@
-
 var express = require('express');
+const images_controlers= require('../controller/images');
 var router = express.Router();
-
-/* GET home page. */
-
-router.get('/', function(req, res, next) {
-  res.render('images', { title: 'Search Results of images' });
-});
-
+/* GET images */
+router.get('/', images_controlers.images_view_all_Page );
 module.exports = router;
 
 
