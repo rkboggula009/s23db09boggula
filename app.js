@@ -73,7 +73,7 @@ let instance2 = new
 images({images_name:"image2", size:"medium",cost:700});
 instance2.save().then(doc=> {
 //if(err) return console.error(err);
-console.log("First object saved")}
+console.log("Second object saved")}
 ).catch(err=>{
   console.error(err)
 });
@@ -81,7 +81,7 @@ let instance3 = new
 images({images_name:"image3", size:"small",cost:800});
 instance3.save().then(doc=> {
 //if(err) return console.error(err);
-console.log("First object saved")}
+console.log("Third object saved")}
 ).catch(err=>{
   console.error(err)
 });

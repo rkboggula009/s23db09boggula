@@ -17,4 +17,7 @@ router.put('/images/:id', images_controller.images_update_put);
 router.get('/images/:id', images_controller.images_detail);
 // GET request for list of all Gift items.
 router.get('/images', images_controller.images_list);
+
+// GET request for one costume.
+router.get('/images/:id', images_controller.images_detail);
 module.exports = router;
