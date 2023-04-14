@@ -103,8 +103,7 @@ ${JSON.stringify(req.body)}`)
 try {
 let toUpdate = await images.findById( req.params.id)
 // Do updates of properties
-if(req.body.images_name)
-toUpdate.images_name = req.body.images_name;
+if(req.body.images_name)toUpdate.images_name = req.body.images_name;
 if(req.body.cost) toUpdate.cost = req.body.cost;
 if(req.body.size) toUpdate.size = req.body.size;
 let result = await toUpdate.save();
