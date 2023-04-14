@@ -7,10 +7,12 @@ var logger = require('morgan');
 require('dotenv').config();
 const connectionString =
 process.env.MONGO_CON
-mongoose = require('mongoose');
+ const mongoose = require('mongoose');
 mongoose.connect(connectionString,
 {useNewUrlParser: true,
 useUnifiedTopology: true});
+console.log("it is connected")
+
 
 //Get the default connection
 var db = mongoose.connection;
@@ -28,7 +30,7 @@ var selectorRouter = require('./routes/selector');
 var resourceRouter = require('./routes/resource');
 
 
-var images = require("./models/images");
+var images = require("./models/image");
 
 
 
@@ -77,7 +79,9 @@ instance1.save().then(doc=> {
 //if(err) return console.error(err);
 console.log("First object saved")}
 ).catch(err=>{
-  console.error(err)})
+  console.error(err);
+ 
+})
 
 let instance2 = new
 images({images_name:"image2", size:"medium",cost:700});

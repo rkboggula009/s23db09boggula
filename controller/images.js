@@ -1,4 +1,4 @@
-var images = require('../models/images');
+var images = require('../models/image');
 // List of all Gifts
 exports.images_list = async function(req, res) {
     try{
@@ -22,13 +22,15 @@ exports.images_create_post = async function(req, res) {
     document.images_name = req.body.images_name;
     document.size = req.body.size;
     document.cost = req.body.cost;
+    // console.log(document);
     try{
     let result = await document.save();
     res.send(result);
     }
-    catch(err){
+    catch(error){
     res.status(500);
-    res.send(`{"error": ${err}}`);
+    res.send(`{"error": ${error}}`);
+    console.log(error)
     }
    };
 // Handle Gift create on POST.
