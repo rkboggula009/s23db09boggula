@@ -1,6 +1,6 @@
 var images = require('../models/images');
 // List of all Gifts
-exports.images_list = async function(req, res) {
+exports.images_list = async function(_req, res) {
     try{
         theimages = await images.find();
         res.send(theimages);
@@ -18,7 +18,7 @@ exports.images_create_post = async function(req, res) {
     // We are looking for a body, since POST does not have query parameters.
     // Even though bodies can be in many different formats, we will be picky
     // and require that it be a json object
-    // {"gift_name":"watch", "numof_gifts":12, "gift_value":"cvbn"}
+    // {"images_name":"image1", "size":"large", "cost":1000}
     document.images_name = req.body.images_name;
     document.size = req.body.size;
     document.cost = req.body.cost;
@@ -33,8 +33,8 @@ exports.images_create_post = async function(req, res) {
     console.log(error)
     }
    };
-// Handle Gift create on POST.
-exports.images_detail = async function(req, res) {
+// Handle images create on POST.
+exports.images_detail = async function(_req, res) {
     try{
         theimages = await images.find();
         res.send(theimages);
@@ -46,7 +46,7 @@ exports.images_detail = async function(req, res) {
 //res.send('NOT IMPLEMENTED: Gift create POST');
 };
 // Handle Gift delete form on DELETE.
-exports.images_delete = async function(req, res) {
+exports.images_delete = async function(_req, res) {
     try{
         theimages = await images.find();
         res.send(theimages);
@@ -58,7 +58,7 @@ exports.images_delete = async function(req, res) {
 // res.send('NOT IMPLEMENTED: Gift delete DELETE ' + req.params.id);
 };
 // Handle Gift update form on PUT.
-exports.images_update_put = async function(req, res) {
+exports.images_update_put = async function(_req, res) {
     try{
         theimages = await images.find();
         res.send(theimages);
@@ -73,7 +73,7 @@ exports.images_update_put = async function(req, res) {
 
 // VIEWS
 // Handle a show all view
-exports.images_view_all_Page = async function(req, res) {
+exports.images_view_all_Page = async function(_req, res) {
 try{
 theimages = await images.find();
 res.render('images', { title: 'images Search Results', results: theimages });

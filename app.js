@@ -13,10 +13,6 @@ mongoose.connect(connectionString,
 useUnifiedTopology: true});
 console.log("it is connected")
 
-
-
-
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var imagesRouter = require('./routes/images');
@@ -26,9 +22,6 @@ var resourceRouter = require('./routes/resource');
 
 
 var images = require("./models/images");
-
-
-
 var app = express();
 
 // view engine setup
@@ -73,9 +66,8 @@ instance1.save().then(doc=> {
 //if(err) return console.error(err);
 console.log("First object saved")}
 ).catch(err=>{
-  console.error(err);
- 
-})
+  console.error(err)
+});
 
 let instance2 = new
 images({images_name:"image2", size:"medium",cost:700});
@@ -83,7 +75,8 @@ instance2.save().then(doc=> {
 //if(err) return console.error(err);
 console.log("First object saved")}
 ).catch(err=>{
-  console.error(err)})
+  console.error(err)
+});
 let instance3 = new
 images({images_name:"image3", size:"small",cost:800});
 instance3.save().then(doc=> {
@@ -91,7 +84,7 @@ instance3.save().then(doc=> {
 console.log("First object saved")}
 ).catch(err=>{
   console.error(err)
-})
+});
 }
 let reseed = true;
 if (reseed) { recreateDB();}
