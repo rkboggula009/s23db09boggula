@@ -45,19 +45,8 @@ exports.images_detail = async function(_req, res) {
         }
 //res.send('NOT IMPLEMENTED: Gift create POST');
 };
-// Handle Gift delete form on DELETE.
-exports.images_delete = async function(_req, res) {
-    try{
-        theimages = await images.find();
-        res.send(theimages);
-        }
-        catch(err){
-        res.status(500);
-        res.send(`{"error": ${err}}`);
-        }
-// res.send('NOT IMPLEMENTED: Gift delete DELETE ' + req.params.id);
-};
-// Handle Gift update form on PUT.
+
+// Handle images update form on PUT.
 exports.images_update_put = async function(_req, res) {
     try{
         theimages = await images.find();
@@ -70,6 +59,19 @@ exports.images_update_put = async function(_req, res) {
 // res.send('NOT IMPLEMENTED: Gift update PUT' + req.params.id);
 };
 
+// Handle images delete on DELETE.
+exports.images_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await images.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+    
 
 // VIEWS
 // Handle a show all view
@@ -96,18 +98,6 @@ res.send(`{"error": document for id ${req.params.id} not found`);
 }
 };
 
-// Handle images delete on DELETE.
-exports.images_delete = async function(req, res) {
-console.log("delete " + req.params.id)
-try {
-result = await images.findByIdAndDelete( req.params.id)
-console.log("Removed " + result)
-res.send(result)
-} catch (err) {
-res.status(500)
-res.send(`{"error": Error deleting ${err}}`);
-}
-};
 
 // Handle Costume update form on PUT.
 exports.images_update_put = async function(req, res) {
