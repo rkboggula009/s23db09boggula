@@ -5,5 +5,8 @@ var router = express.Router();
 router.get('/', images_controllers.images_view_all_Page );
 module.exports = router;
 
+/* GET detail images page */
+router.get('/detail', images_controllers.images_view_all_Page);
+
 
 

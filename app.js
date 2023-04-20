@@ -86,7 +86,7 @@ console.log("Third object saved")}
   console.error(err)
 });
 }
-let reseed = true;
+let reseed = false;
 if (reseed) { recreateDB();}
 
 module.exports = app;
