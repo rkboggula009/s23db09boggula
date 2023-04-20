@@ -19,5 +19,5 @@ router.get('/images/:id', images_controller.images_detail);
 router.get('/images', images_controller.images_list);
 
 // GET request for one costume.
-router.get('/images/:id', images_controller.images_detail);
+//router.get('/images/:id', images_controller.images_detail);
 module.exports = router;

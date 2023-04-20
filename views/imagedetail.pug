@@ -1,20 +1,24 @@
 extends layout
+
 block content
   h1= title
-  - let imagesid = toShow._id
-  - let images_name = toShow.images_name
-  - let imagescost = toShow.cost
-  - let imagessize = toShow.size
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let imagesid = toShow._id
+    - let images_name = toShow.images_name
+    - let imagescost = toShow.cost
+    - let imagessize = toShow.size
     div
-        div.row
-            div(class='imagesAttr mr-3') images ID is:
-            div #{imagesid}
-        div.row
-            div(class='imagesAttr mr-3') images name is:
-            div #{images_name}
-        div.row
-            div(class='imagesAttr mr-3') images Size is:
-            div #{imagessize}
-        div.row
-            div(class='imagesAttr mr-3') images Cost is:
-            div #{imagescost}
+      div.row
+        div(class='imagesAttr mr-3') images ID is:
+        div #{imagesid}
+      div.row
+        div(class='imagesAttr mr-3') images name is:
+        div #{images_name}
+      div.row
+        div(class='imagesAttr mr-3') images Size is:
+        div #{imagessize}
+      div.row
+        div(class='imagesAttr mr-3') images Cost is:
+        div #{imagescost}

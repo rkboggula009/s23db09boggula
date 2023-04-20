@@ -35,17 +35,17 @@ exports.images_create_post = async function(req, res) {
     }
    };
 // Handle images create on POST.
-exports.images_detail = async function(_req, res) {
-    try{
-        theimages = await images.find();
-        res.send(theimages);
-        }
-        catch(err){
-        res.status(500);
-        res.send(`{"error": ${err}}`);
-        }
+// exports.images_detail = async function(_req, res) {
+//     try{
+//         theimages = await images.find();
+//         res.send(theimages);
+//         }
+//         catch(err){
+//         res.status(500);
+//         res.send(`{"error": ${err}}`);
+//         }
 //res.send('NOT IMPLEMENTED: Gift create POST');
-};
+//};
 
 // Handle images update form on PUT.
 exports.images_update_put = async function(_req, res) {
@@ -70,6 +70,20 @@ exports.images_delete = async function(req, res) {
     } catch (err) {
     res.status(500)
     res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+
+        // Handle a delete one view with id from query
+exports.images_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try{
+    result = await images.findById(req.query.id)
+    res.render('imagesdelete', { title: 'images Delete', toShow:
+    result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
     }
     };
     
@@ -125,7 +139,7 @@ exports.images_view_one_Page = async function(req, res) {
     console.log("single view for id " + req.query.id)
     try{
     result = await images.findById( req.query.id)
-    res.render('imagesdetail',
+    res.render('imagedetail',
     { title: 'images Detail', toShow: result });
     }
     catch(err){
@@ -133,6 +147,35 @@ exports.images_view_one_Page = async function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
     };
+
+   // Handle building the view for creating a images.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.images_create_Page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('imagescreate', { title: 'images  Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+
+    // Handle building the view for updating a images.
+// query provides the id
+exports.images_update_Page = async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+    let result = await images .findById(req.query.id)
+    res.render('imagesupdate', { title: 'images Update', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+
 
 
 
