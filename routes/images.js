@@ -8,13 +8,13 @@ module.exports = router;
 /* GET detail images page */
 router.get('/detail', images_controllers.images_view_one_Page);
 
-/* GET create costume page */
+/* GET create images page */
 router.get('/create', images_controllers.images_create_Page);
 
 /* GET create update page */
 router.get('/update', images_controllers.images_update_Page);
 
-/* GET delete costume page */
+/* GET delete images page */
 router.get('/delete', images_controllers.images_delete_Page);
 
 

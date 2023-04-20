@@ -2,42 +2,43 @@ extends layout
 
 block content
   h1= title
-
-  - let imagesid = toShow._id
-  - let images_name = toShow.images_name
-  - let imagescost = toShow.cost
-  - let imagessize = toShow.size
+  if toShow
+    - let images_id = toShow._id
+    - let images_name = toShow.images_name
+    - let size = toShow.size
+    - let cost = toShow.cost
 
     div.row(class='mb-2')
-        div.mr-1 ID is
-            div #{imagesid}
-            - let actionid = "/resource/images/update/" + imagesid
-            form(id='imagesForm', action= actionid, method="PUT")
+      div.mr-1 ID is
+      div #{images_id}
+      - let actionid = "/resource/images/" + images_id
+      form(id='imagesForm', action= actionid, method="PUT")
         div.form-group
-            label.imagesAttr(for='images_name') images name 
-            input#images_name(type='text', name='images_name', value= images_name )
+          label.imagesAttr(for='images_name') images name
+          input#grass_type(type='text', name='images_name', value= images_name )
         div.form-group
-            label.imagesAttr(for='size') Costume size
-            input#size(type='text', name='size', value= imagessize )
+          label.imagesAttr(for='size') images size 
+          input#size(type='text', name='size', value= size )
         div.form-group
-            label.imagesAttr(for='cost') Costume cost
-            input#cost(type='number', name='cost', value= imagescost )
-            input(type="submit")
-  script.
-    document.forms['imagesForm'].addEventListener('submit', (event) => {
-        event.preventDefault();
-        // TODO do something here to show user that form is being submitted
-        fetch(event.target.action, {
-            method: 'PUT',
-            body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-        }).then((resp) => {
-            return resp.json(); // or resp.text() or whatever the server sends
-        }).then((body) => {
-            alert("Update succeded")
-        // TODO handle body
-        }).catch((error) => {
-        // TODO handle error
-            alert("Update failed " + error )
-        });
-        });
-
+          label.imagesAttr(for='cost') images cost
+          input#cost(type='number', name='cost', value= cost )
+        input(type="submit")
+        script.
+          document.forms['imagesForm'].addEventListener('submit', (event) => {
+            event.preventDefault();
+            // TODO do something here to show user that form is being submitted
+            fetch(event.target.action, {
+              method: 'PUT',
+              body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+            }).then((resp) => {
+              return resp.json(); // or resp.text() or whatever the server sends
+            }).then((body) => {
+              alert("Update succeeded")
+              // TODO handle body
+            }).catch((error) => {
+              // TODO handle error
+              alert("Update failed " + error )
+            });
+          });
+  else
+    h2 No instance to delete

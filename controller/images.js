@@ -1,6 +1,6 @@
 
 var images = require('../models/images');
-// List of all Gifts
+// List of all images
 exports.images_list = async function(_req, res) {
     try{
         theimages = await images.find();
@@ -12,7 +12,7 @@ exports.images_list = async function(_req, res) {
         }
 };
 
-// Handle Costume create on POST.
+// Handle images create on POST.
 exports.images_create_post = async function(req, res) {
     console.log(req.body)
     let document = new images();
@@ -44,7 +44,7 @@ exports.images_create_post = async function(req, res) {
 //         res.status(500);
 //         res.send(`{"error": ${err}}`);
 //         }
-//res.send('NOT IMPLEMENTED: Gift create POST');
+//res.send('NOT IMPLEMENTED: images create POST');
 //};
 
 // Handle images update form on PUT.
@@ -57,7 +57,7 @@ exports.images_update_put = async function(_req, res) {
         res.status(500);
         res.send(`{"error": ${err}}`);
         }
-// res.send('NOT IMPLEMENTED: Gift update PUT' + req.params.id);
+// res.send('NOT IMPLEMENTED: images update PUT' + req.params.id);
 };
 
 // Handle images delete on DELETE.
@@ -101,7 +101,7 @@ res.send(`{"error": ${err}}`);
 }
 };
 
-// for a specific Costume.
+// for a specific images.
 exports.images_detail = async function(req, res) {
 console.log("detail" + req.params.id)
 try {
@@ -114,7 +114,7 @@ res.send(`{"error": document for id ${req.params.id} not found`);
 };
 
 
-// Handle Costume update form on PUT.
+// Handle images update form on PUT.
 exports.images_update_put = async function(req, res) {
 console.log(`update on id ${req.params.id} with body
 ${JSON.stringify(req.body)}`)
