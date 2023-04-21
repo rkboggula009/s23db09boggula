@@ -120,7 +120,7 @@ instance3.save().then(doc=> {
   console.error(err)
 });
 }
-let reseed = false;
+let reseed = true;
 if (reseed) { recreateDB();}
 
 module.exports = app;
