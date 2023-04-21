@@ -1,17 +1,26 @@
 extends layout
+
 block content
   h1= title
-  
+
+  - let items = results;
+
   div(class="container-fluid")
-   div(class="row")
-    - let results=[{images_name:"image1",size :"large",cost:1000},{images_name:"image2",size :"medium",cost:700},{images_name:"image3",size:"small",cost:800}]
-      each value,index in results
-       div(class="col-sm-2" onclick=`buy(${index})`)  #{value.images_name} Images , size  is #{value.size}, with cost of #{value.cost}
-  script. 
-    function buy(index)
-    {
-      alert(`You purchased Item ${index+1}`)
+    div(class="row m-1")
+      each item in items
+        - let destination = `dispatch(\"/images/update?id=${item._id}\")`
+        div(class="row-sm-2", class="m-1")
+          Item #{item.images_name}(#{item.size}) is #{item.cost}
+          button.btn( class="btn-primary ml-1", onclick= destination) Update
+
+  script.
+    function dispatch(path){
+      window.location.href=path
     }
+
+
+
+
 
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
