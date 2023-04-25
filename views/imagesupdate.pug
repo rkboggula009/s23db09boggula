@@ -23,7 +23,7 @@ block content
           label.imagesAttr(for='cost') images cost
           input#cost(type='number', name='cost', value= cost )
         input(type="submit")
-        script.
+      script.
           document.forms['imagesForm'].addEventListener('submit', (event) => {
             event.preventDefault();
             // TODO do something here to show user that form is being submitted
@@ -37,7 +37,7 @@ block content
               // TODO handle body
             }).catch((error) => {
               // TODO handle error
-              alert("Update failed " + error )
+              alert("Update failed,Give correct details " + error )
             });
           });
   else

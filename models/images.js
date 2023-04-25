@@ -1,14 +1,19 @@
-const mongoose = require("mongoose")
-const imagesSchema = mongoose.Schema({
-images_name: String,
-cost: Number,
-size: String
-})
-module.exports = mongoose.model("images",imagesSchema)
+const mongoose = require("mongoose");
 
-//Get the default connection
-var db = mongoose.connection;
-//Bind connection to error event
-db.on('error', console.error.bind(console, 'MongoDB connectionerror:'));
-db.once("open", function(){
-console.log("Connection to DB succeeded")});
+const imagesSchema = mongoose.Schema({
+  images_name: { 
+    type: String 
+  },
+  size: { 
+    type: String 
+  },
+  cost: {
+    type: Number,
+    min: [0, "Price must be min 0"],
+    max: [100000, "Price must be max 100"],
+    
+    
+  },
+});
+
+module.exports = mongoose.model("images", imagesSchema);

@@ -1,26 +1,25 @@
 extends layout
 
 block content
-  h1= title
 
-  - let items = results;
+  - let image = results
+  h1= title
+  - let create = `dispatch(\"/images/create\")`
+  button.btn(class="btn-info", onclick=create) Add new images
 
   div(class="container-fluid")
     div(class="row m-1")
-      each item in items
-        - let destination = `dispatch(\"/images/update?id=${item._id}\")`
-        div(class="row-sm-2", class="m-1")
-          Item #{item.images_name}(#{item.size}) is #{item.cost}
-          button.btn( class="btn-primary ml-1", onclick= destination) Update
+      each images in image
+        - let destination = `dispatch(\"/images/update?id=${images._id}\")`
+        - let detail = `dispatch(\"/images/detail/?id=${images._id}")`
+        - let deleteimages = `dispatch(\"/images/delete/?id=${images._id}")`      
+        div(class="row-sm-2", class="m-1") 
+          | #{images.images_name} (#{images.size}) is #{images.cost}
+          button.btn(class="btn-primary ml-1", onclick=destination) Update
+          button.btn(class="btn-success", onclick=detail) Details
+          button.btn(class="btn-dark", onclick=deleteimages) Delete
 
   script.
     function dispatch(path){
-      window.location.href=path
+      window.location.href = path
     }
-
-
-
-
-
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     

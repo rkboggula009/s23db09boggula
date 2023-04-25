@@ -1,19 +1,17 @@
 extends layout
 
 block content
-  h1= title
-  p This is index page #{title}
-  button(type="button", class="btn btn-success" onClick="doReduce()") Press Me
-  div#reduce Reduce the value. 
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/images") Take me to images
+    br
+    a(href="/logout") Logout
+    module.exports = router;
 
-  script.  
-    var count = 20
-    var change = -1
-    function doReduce() {
-      count = count + change 
-      change = change - 1
-      document.getElementById("reduce").innerHTML = "Count "+ count +" with change "+change;
-    }
 
 
 
