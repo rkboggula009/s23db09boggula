@@ -19,13 +19,13 @@ router.get('/', images_controllers.images_view_all_Page );
 router.get('/detail', images_controllers.images_view_one_Page);
 
 /* GET create images page */
-router.get('/create', images_controllers.images_create_Page);
+router.get('/create', secured ,images_controllers.images_create_Page);
 
-/* GET create update page */
-router.get('/update', secured,images_controllers.images_update_Page);
+/* GET update images page */
+router.get('/update', secured ,images_controllers.images_update_Page);
 
 /* GET delete images page */
-router.get('/delete', images_controllers.images_delete_Page);
+router.get('/delete', secured ,images_controllers.images_delete_Page);
 module.exports = router;
 
 

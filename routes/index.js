@@ -12,7 +12,7 @@ router.get('/register', function(req, res) {
 });
 
 router.post('/register', function(req, res) {
-    Account.findOne({ username : req.body.username }).then((err, user) =>{
+    Account.findOne({ username: req.body.username }).then((err, user) =>{
 
         if(err) {
             return res.render('register', { title: 'Registration',
